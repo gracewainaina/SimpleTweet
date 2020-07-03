@@ -37,13 +37,13 @@ public class TimelineActivity extends AppCompatActivity {
     public static final String TAG = "TimelineActivity";
     private final int REQUEST_CODE = 20;
 
-    TweetDao tweetDao;
-    TwitterClient client;
-    RecyclerView rvTweets;
-    List<Tweet> tweets;
-    TweetsAdapter adapter;
-    SwipeRefreshLayout swipeContainer;
-    EndlessRecyclerViewScrollListener scrollListener;
+    public TweetDao tweetDao;
+    public TwitterClient client;
+    public RecyclerView rvTweets;
+    public List<Tweet> tweets;
+    public TweetsAdapter adapter;
+    public SwipeRefreshLayout swipeContainer;
+    public EndlessRecyclerViewScrollListener scrollListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +54,9 @@ public class TimelineActivity extends AppCompatActivity {
         tweetDao = ((TwitterApp) getApplicationContext()).getMyDatabase().tweetDao();
 
 
-        //find the recycler view
+        // find the recycler view
         rvTweets = findViewById(R.id.rvTweets);
-        //init the list of tweets and adapter
+        // init the list of tweets and adapter
         tweets = new ArrayList<>();
         adapter = new TweetsAdapter(this, tweets);
 
@@ -84,7 +84,7 @@ public class TimelineActivity extends AppCompatActivity {
         scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                Log.i(TAG, "onLoadMore "+page);
+                Log.i(TAG, "onLoadMore " + page);
                 loadMoreData();
             }
         };
@@ -108,13 +108,13 @@ public class TimelineActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.compose){
+        if (item.getItemId() == R.id.compose) {
             // navigate to the compose activity
             Intent intent = new Intent(this, ComposeActivity.class);
             startActivityForResult(intent, REQUEST_CODE);
@@ -125,7 +125,7 @@ public class TimelineActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == REQUEST_CODE && resultCode==RESULT_OK){
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             // Get data from the intent, the tweet object
             Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
             // Update recycler view with this new tweet
@@ -164,7 +164,7 @@ public class TimelineActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                 Log.e(TAG, "onFailure for loadMoreData", throwable);
             }
-        }, tweets.get(tweets.size()-1).id);
+        }, tweets.get(tweets.size() - 1).id);
 
     }
 
@@ -173,7 +173,7 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 Log.i(TAG, "onSuccess" + json.toString());
-                JSONArray jsonArray =  json.jsonArray;
+                JSONArray jsonArray = json.jsonArray;
                 try {
                     final List<Tweet> tweetsFromNetwork = Tweet.fromJsonArray(jsonArray);
                     // CLEAR OUT old items before appending in the new ones

@@ -30,8 +30,8 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
 
-    Context context;
-    List<Tweet> tweets;
+    public Context context;
+    public List<Tweet> tweets;
 
     //pass in the context and list of tweets by the use of a constructor
     public TweetsAdapter(Context context, List<Tweet> tweets) {
@@ -43,7 +43,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =  LayoutInflater.from(context).inflate(R.layout.item_tweet, parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_tweet, parent, false);
         return new ViewHolder(view);
     }
 
@@ -61,8 +61,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public int getItemCount() {
         return tweets.size();
     }
+
     // Clean all elements of the recycler
-    public void clear(){
+    public void clear() {
         tweets.clear();
         notifyDataSetChanged();
     }
@@ -92,20 +93,20 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     }
 
     //define a viewholder
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView ivProfileImage;
-        TextView tvBody;
-        TextView tvScreenName;
-        TextView tvTimestamp;
-        ImageView mediaEmbedded;
-        TextView tvRetweet;
-        TextView tvLike;
-        ImageView ivLike;
-        ImageView ivRetweet;
-        ImageView ivReply;
+        public ImageView ivProfileImage;
+        public TextView tvBody;
+        public TextView tvScreenName;
+        public TextView tvTimestamp;
+        public ImageView mediaEmbedded;
+        public TextView tvRetweet;
+        public TextView tvLike;
+        public ImageView ivLike;
+        public ImageView ivRetweet;
+        public ImageView ivReply;
 
-        String relativeTime;
+        public String relativeTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -131,11 +132,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName.setText(tweet.user.screenName);
             relativeTime = getRelativeTimeAgo(tweet.createdAt);
             tvTimestamp.setText(relativeTime);
-            tvLike.setText(""+tweet.favoriteCount);
-            tvRetweet.setText(""+tweet.retweetCount);
+            tvLike.setText("" + tweet.favoriteCount);
+            tvRetweet.setText("" + tweet.retweetCount);
             Glide.with(context).load(tweet.user.profileImageUrl).transform(new RoundedCornersTransformation(radius, margin)).into(ivProfileImage);
             if (tweet.mediaURL != null) {
-                Log.i("testglides", "mediaURL is "+tweet.mediaURL);
+                Log.i("testglides", "mediaURL is " + tweet.mediaURL);
                 Glide.with(context).load(tweet.mediaURL).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(mediaEmbedded);
                 mediaEmbedded.setVisibility(View.VISIBLE);
             } else {

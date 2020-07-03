@@ -15,18 +15,18 @@ import org.parceler.Parcels;
 
 public class TweetDetailsActivity extends AppCompatActivity {
 
-    Tweet tweet;
+    public Tweet tweet;
 
-    TextView tvBody;
-    TextView tvScreenName;
-    TextView tvTimestamp;
-    ImageView ivProfileImage;
-    ImageView mediaEmbedded;
-    ImageView ivLike;
-    ImageView ivRetweet;
-    ImageView ivReply;
-    TextView tvRetweet;
-    TextView tvLike;
+    public TextView tvBody;
+    public TextView tvScreenName;
+    public TextView tvTimestamp;
+    public ImageView ivProfileImage;
+    public ImageView mediaEmbedded;
+    public ImageView ivLike;
+    public ImageView ivRetweet;
+    public ImageView ivReply;
+    public TextView tvRetweet;
+    public TextView tvLike;
 
 
     @Override

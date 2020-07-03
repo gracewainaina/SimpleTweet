@@ -31,7 +31,8 @@ public class User {
     public String retweetCount;
 
     // empty constructor needed by the parceler library
-    public User(){}
+    public User() {
+    }
 
     public static User fromJson(JSONObject jsonObject) throws JSONException {
         User user = new User();
@@ -44,7 +45,7 @@ public class User {
 
     public static List<User> fromJsonTweetArray(List<Tweet> tweetsFromNetwork) {
         List<User> users = new ArrayList<>();
-        for (int i = 0; i < tweetsFromNetwork.size(); i++){
+        for (int i = 0; i < tweetsFromNetwork.size(); i++) {
             users.add(tweetsFromNetwork.get(i).user);
         }
         return users;

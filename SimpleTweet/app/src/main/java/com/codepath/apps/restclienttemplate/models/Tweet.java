@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.concurrent.Phaser;
 
 @Parcel
-@Entity(foreignKeys = @ForeignKey(entity= User.class, parentColumns="id", childColumns="userId"))
+@Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId"))
 
 public class Tweet {
 
@@ -51,7 +51,8 @@ public class Tweet {
     public int favoriteCount;
 
     // empty constructor needed by the parceler library
-    public Tweet(){}
+    public Tweet() {
+    }
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
@@ -72,9 +73,10 @@ public class Tweet {
 
         return tweet;
     }
+
     public static List<Tweet> fromJsonArray(JSONArray jsonArray) throws JSONException {
         List<Tweet> tweets = new ArrayList<>();
-        for (int i = 0; i < jsonArray.length(); i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             tweets.add(fromJson(jsonArray.getJSONObject(i)));
         }
         return tweets;
