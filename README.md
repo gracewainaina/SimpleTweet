@@ -33,13 +33,16 @@ The following **stretch** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/gracewainaina/SimpleTweet/blob/master/Screenshots/TweetWalkthrough1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/gracewainaina/SimpleTweet/blob/master/Screenshots/TweetWalkthrough2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/gracewainaina/SimpleTweet/blob/master/Screenshots/TweetWalkthrough3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+- Making the tweets available offline gave me some trouble while working with SQLite, mostly because of version control issues.
 
 ## Open-source libraries used
 
