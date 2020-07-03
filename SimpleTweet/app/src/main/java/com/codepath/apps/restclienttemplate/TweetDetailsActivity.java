@@ -18,6 +18,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
     public Tweet tweet;
 
     public TextView tvBody;
+    public TextView tvName;
     public TextView tvScreenName;
     public TextView tvTimestamp;
     public ImageView ivProfileImage;
@@ -35,6 +36,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tweet_details);
 
         tvBody = findViewById(R.id.tvBody);
+        tvName = findViewById(R.id.tvName);
         tvScreenName = findViewById(R.id.tvScreenName);
         tvTimestamp = findViewById(R.id.tvTimestamp);
         ivProfileImage = findViewById(R.id.ivProfileImage);
@@ -50,6 +52,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
         tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra(Tweet.class.getSimpleName()));
 
         tvBody.setText(tweet.getBody());
+        tvName.setText(tweet.getUser().name);
         tvScreenName.setText(tweet.getUser().screenName);
         tvTimestamp.setText(getIntent().getStringExtra("Timestamp"));
         tvRetweet.setText(getIntent().getStringExtra("retweet count"));

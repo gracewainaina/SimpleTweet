@@ -97,6 +97,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
         public ImageView ivProfileImage;
         public TextView tvBody;
+        public TextView tvName;
         public TextView tvScreenName;
         public TextView tvTimestamp;
         public ImageView mediaEmbedded;
@@ -112,6 +113,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
+            tvName = itemView.findViewById(R.id.tvName);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
             mediaEmbedded = itemView.findViewById(R.id.mediaEmbedded);
@@ -129,7 +131,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             int radius = 30;
             int margin = 10;
             tvBody.setText(tweet.body);
+            tvName.setText(tweet.user.name);
             tvScreenName.setText(tweet.user.screenName);
+            tvName.setText(tweet.user.name);
+
             relativeTime = getRelativeTimeAgo(tweet.createdAt);
             tvTimestamp.setText(relativeTime);
             tvLike.setText("" + tweet.favoriteCount);
